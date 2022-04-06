@@ -29,11 +29,6 @@ public class MainController {
         return "Server Application API, Hello!";
     }
 
-    @GetMapping("/employees")
-    public String employees() {
-        return "Employees";
-    }
-
     @GetMapping("/api/supervisors")
     public List<Supervisor> getSupervisors() {
         String url = "https://o3m5qixdng.execute-api.us-east-1.amazonaws.com/api/managers";
@@ -135,11 +130,12 @@ public class MainController {
         return newList;
     }
 
+
+
     private Supervisor findSupervisor(List<Supervisor> list, String displayString) {
         Supervisor supervisor = new Supervisor();
         list.forEach(entry -> {
             if(entry.getDisplayName().contains(displayString)) {
-                System.out.println("Found " + entry.getDisplayName());
                 supervisor.setId(entry.getId());
                 supervisor.setPhone(entry.getPhone());
                 supervisor.setJurisdiction(entry.getJurisdiction());
